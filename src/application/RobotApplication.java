@@ -59,6 +59,7 @@ public class RobotApplication extends RoboticsAPIApplication {
 			robot.move(ptp(getApplicationData().getFrame("/P5")).setJointVelocityRel(0.5));
 			ThreadUtil.milliSleep(1000);
 			robot.move(ptp(getApplicationData().getFrame("/P6")).setJointVelocityRel(0.65));
+			robot.move(ptp(getApplicationData().getFrame("/P5")).setJointVelocityRel(0.5));
 			robot.move(ptp(getApplicationData().getFrame("/P4")).setJointVelocityRel(0.5));
 		}
 		}
