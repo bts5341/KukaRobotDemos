@@ -42,14 +42,14 @@ public class RobotApplication extends RoboticsAPIApplication {
 	@Override
 	public void run() {
 		// your application execution starts here
-		MotionBatch wave = new MotionBatch(ptp(getApplicationData().getFrame("/P1")),ptp(getApplicationData().getFrame("/P2")),ptp(getApplicationData().getFrame("/P1")),ptp(getApplicationData().getFrame("/P2")),ptp(getApplicationData().getFrame("/P1")),ptp(getApplicationData().getFrame("/P2")),ptp(getApplicationData().getFrame("/P1")),ptp(getApplicationData().getFrame("/P2")),ptp(getApplicationData().getFrame("/P4"))).setBlendingRel(0.5).setJointVelocityRel(0.1);
+		MotionBatch wave = new MotionBatch(ptp(getApplicationData().getFrame("/P1")),ptp(getApplicationData().getFrame("/P2")),ptp(getApplicationData().getFrame("/P1")),ptp(getApplicationData().getFrame("/P2")),ptp(getApplicationData().getFrame("/P1")),ptp(getApplicationData().getFrame("/P2")),ptp(getApplicationData().getFrame("/P1")),ptp(getApplicationData().getFrame("/P2")),ptp(getApplicationData().getFrame("/P4"))).setBlendingRel(0.25).setJointVelocityRel(0.25);
 		for (int i=0;i<2;i++){
 		int answer=getApplicationUI().displayModalDialog(ApplicationDialogType.QUESTION,"What would you like me to do?", "Wave","no");
 		if (answer==0){
 			logger.info("Waving!");
-			robot.move(ptp(getApplicationData().getFrame("/P4")).setJointVelocityRel(0.25));
+			robot.move(ptp(getApplicationData().getFrame("/P4")).setJointVelocityRel(0.4));
 			robot.move(wave);
-			robot.move(ptp(getApplicationData().getFrame("/P4")).setJointVelocityRel(0.25));
+			robot.move(ptp(getApplicationData().getFrame("/P4")).setJointVelocityRel(0.4));
 		
 		}else{
 			logger.info("bye!");
