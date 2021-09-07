@@ -37,7 +37,7 @@ public class RobotApplication extends RoboticsAPIApplication {
 	@Override
 	public void run() {
 		// your application execution starts here
-		lBR_iiwa_14_R820_1.moveAsync(ptpHome());
+		lBR_iiwa_14_R820_1.move(ptpHome());
 		lBR_iiwa_14_R820_1.moveAsync(ptp(getApplicationData().getFrame("/P1")));
 		lBR_iiwa_14_R820_1.moveAsync(ptp(getApplicationData().getFrame("/P2")));
 		lBR_iiwa_14_R820_1.moveAsync(ptp(getApplicationData().getFrame("/P3")));
