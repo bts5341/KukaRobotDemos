@@ -57,9 +57,9 @@ public class RobotApplication extends RoboticsAPIApplication {
 				ptp(-Math.PI/2,-Math.PI/2,0,-Math.PI/2,Math.PI/2,0,0),
 				ptp(-Math.PI/2,-Math.PI/4,-Math.PI/4,-Math.PI/4,Math.PI/2,0,0),
 				ptp(-Math.PI/2,-Math.PI/2,0,-Math.PI/2,Math.PI/2,0,0)
-				).setJointVelocityRel(0.5).setBlendingRel(0);
+				).setJointVelocityRel(0.6).setBlendingRel(0.2);
 		while(!END){
-		int answer=getApplicationUI().displayModalDialog(ApplicationDialogType.QUESTION,"What would you like me to do?", "Wave","High Five","Dance","End");
+		int answer=getApplicationUI().displayModalDialog(ApplicationDialogType.QUESTION,"What would you like me to do?", "Wave","Fist Bump","Dance","End");
 		if (answer==0){
 			logger.info("Waving!");
 			robot.move(ptp(getApplicationData().getFrame("/P4")).setJointVelocityRel(0.4));
@@ -68,7 +68,7 @@ public class RobotApplication extends RoboticsAPIApplication {
 			robot.move(ptp(getApplicationData().getFrame("/P4")).setJointVelocityRel(0.75));
 		
 		}else if (answer==1){
-			logger.info("High Five!");
+			logger.info("Fist Bump!");
 			robot.move(ptp(getApplicationData().getFrame("/P4")).setJointVelocityRel(0.5));
 			robot.move(ptp(getApplicationData().getFrame("/P5")).setJointVelocityRel(0.5));
 			ThreadUtil.milliSleep(1000);
