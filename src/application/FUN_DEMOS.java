@@ -30,12 +30,13 @@ import com.kuka.task.ITaskLogger;
  * @see #run()
  * @see #dispose()
  */
-public class RobotApplication extends RoboticsAPIApplication {
-	@Inject
-	private ITaskLogger logger;
+public class FUN_DEMOS extends RoboticsAPIApplication {
 	@Inject
 	private LBR robot;
+	@Inject 
+	private ITaskLogger logger;
 
+	
 	@Override
 	public void initialize() {
 		// initialize your application here
@@ -43,7 +44,6 @@ public class RobotApplication extends RoboticsAPIApplication {
 
 	@Override
 	public void run() {
-		// your application execution starts here
 		boolean END=false;
 		MotionBatch wave = new MotionBatch(ptp(getApplicationData().getFrame("/P1")),ptp(getApplicationData().getFrame("/P2")),ptp(getApplicationData().getFrame("/P1")),ptp(getApplicationData().getFrame("/P2")),ptp(getApplicationData().getFrame("/P1")),ptp(getApplicationData().getFrame("/P4"))).setBlendingRel(0.1).setJointVelocityRel(0.5);
 		MotionBatch dance = new MotionBatch(
@@ -89,4 +89,4 @@ public class RobotApplication extends RoboticsAPIApplication {
 		}
 		}
 	}
-}
+	}
