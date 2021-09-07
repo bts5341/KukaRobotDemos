@@ -43,6 +43,7 @@ public class RobotApplication extends RoboticsAPIApplication {
 	public void run() {
 		// your application execution starts here
 		MotionBatch test = new MotionBatch(ptp(getApplicationData().getFrame("/P4")),ptp(getApplicationData().getFrame("/P1")),ptp(getApplicationData().getFrame("/P2")),ptp(getApplicationData().getFrame("/P3"))).setBlendingRel(0.5);
+		while(true){
 		int answer=getApplicationUI().displayModalDialog(ApplicationDialogType.QUESTION,"yes or no?", "yes","no");
 		if (answer==0){
 		lBR_iiwa_14_R820_1.move(test);
@@ -51,4 +52,5 @@ public class RobotApplication extends RoboticsAPIApplication {
 			logger.info("bye!");
 		}
 		}
+	}
 }
