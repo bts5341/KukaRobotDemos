@@ -30,7 +30,7 @@ import com.kuka.task.ITaskLogger;
 public class RobotApplication extends RoboticsAPIApplication {
 	@Inject
 	private ITaskLogger logger;
-
+	@Inject
 	private LBR lBR_iiwa_14_R820_1;
 
 	@Override
