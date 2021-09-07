@@ -43,11 +43,12 @@ public class RobotApplication extends RoboticsAPIApplication {
 	public void run() {
 		// your application execution starts here
 		MotionBatch test = new MotionBatch(ptp(getApplicationData().getFrame("/P4")),ptp(getApplicationData().getFrame("/P1")),ptp(getApplicationData().getFrame("/P2")),ptp(getApplicationData().getFrame("/P3"))).setBlendingRel(0.5);
-		while(true){
-		int answer=getApplicationUI().displayModalDialog(ApplicationDialogType.QUESTION,"yes or no?", "yes","no");
+		for (int i=0;i<2;i++){
+		int answer=getApplicationUI().displayModalDialog(ApplicationDialogType.QUESTION,"What would you like me to do?", "Wave","no");
 		if (answer==0){
-		lBR_iiwa_14_R820_1.move(test);
-		logger.info("Hello there!");
+			logger.info("Waving!");
+			lBR_iiwa_14_R820_1.move(test);
+		
 		}else{
 			logger.info("bye!");
 		}
