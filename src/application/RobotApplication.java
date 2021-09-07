@@ -53,7 +53,10 @@ public class RobotApplication extends RoboticsAPIApplication {
 			
 		
 		}else{
-			logger.info("bye!");
+			robot.move(ptp(getApplicationData().getFrame("/P1")).setJointVelocityRel(0.4));
+			robot.move(ptp(getApplicationData().getFrame("/P2")).setJointVelocityRel(0.4));
+			robot.move(ptp(getApplicationData().getFrame("/P3")).setJointVelocityRel(0.4));
+			robot.move(ptp(getApplicationData().getFrame("/P4")).setJointVelocityRel(0.4));
 		}
 		}
 	}
