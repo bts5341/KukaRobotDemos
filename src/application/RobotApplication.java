@@ -42,7 +42,7 @@ public class RobotApplication extends RoboticsAPIApplication {
 	@Override
 	public void run() {
 		// your application execution starts here
-		MotionBatch wave = new MotionBatch(ptp(getApplicationData().getFrame("/P1")),ptp(getApplicationData().getFrame("/P2")),ptp(getApplicationData().getFrame("/P1")),ptp(getApplicationData().getFrame("/P2")),ptp(getApplicationData().getFrame("/P1")),ptp(getApplicationData().getFrame("/P2")),ptp(getApplicationData().getFrame("/P1")),ptp(getApplicationData().getFrame("/P2")),ptp(getApplicationData().getFrame("/P4"))).setBlendingRel(0.65).setJointVelocityRel(0.5);
+		MotionBatch wave = new MotionBatch(ptp(getApplicationData().getFrame("/P1")),ptp(getApplicationData().getFrame("/P2")),ptp(getApplicationData().getFrame("/P1")),ptp(getApplicationData().getFrame("/P2")),ptp(getApplicationData().getFrame("/P1")),ptp(getApplicationData().getFrame("/P2")),ptp(getApplicationData().getFrame("/P1")),ptp(getApplicationData().getFrame("/P2")),ptp(getApplicationData().getFrame("/P4"))).setBlendingRel(0.1).setJointVelocityRel(0.5);
 		for (int i=0;i<2;i++){
 		int answer=getApplicationUI().displayModalDialog(ApplicationDialogType.QUESTION,"What would you like me to do?", "Wave","no");
 		if (answer==0){
@@ -50,13 +50,10 @@ public class RobotApplication extends RoboticsAPIApplication {
 			robot.move(ptp(getApplicationData().getFrame("/P4")).setJointVelocityRel(0.4));
 			robot.move(ptp(getApplicationData().getFrame("/P1")).setJointVelocityRel(0.4));
 			robot.move(wave);
-			
+			robot.move(ptp(getApplicationData().getFrame("/P4")).setJointVelocityRel(0.75));
 		
 		}else{
-			robot.move(ptp(getApplicationData().getFrame("/P1")).setJointVelocityRel(0.4));
-			robot.move(ptp(getApplicationData().getFrame("/P2")).setJointVelocityRel(0.4));
-			robot.move(ptp(getApplicationData().getFrame("/P3")).setJointVelocityRel(0.4));
-			robot.move(ptp(getApplicationData().getFrame("/P4")).setJointVelocityRel(0.4));
+			
 		}
 		}
 	}
