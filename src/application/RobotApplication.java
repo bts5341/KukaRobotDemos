@@ -2,6 +2,8 @@ package application;
 
 
 import javax.inject.Inject;
+
+import com.kuka.common.ThreadUtil;
 import com.kuka.roboticsAPI.applicationModel.RoboticsAPIApplication;
 import static com.kuka.roboticsAPI.motionModel.BasicMotions.*;
 
@@ -42,9 +44,9 @@ public class RobotApplication extends RoboticsAPIApplication {
 	@Override
 	public void run() {
 		// your application execution starts here
-		MotionBatch wave = new MotionBatch(ptp(getApplicationData().getFrame("/P1")),ptp(getApplicationData().getFrame("/P2")),ptp(getApplicationData().getFrame("/P1")),ptp(getApplicationData().getFrame("/P2")),ptp(getApplicationData().getFrame("/P1")),ptp(getApplicationData().getFrame("/P2")),ptp(getApplicationData().getFrame("/P1")),ptp(getApplicationData().getFrame("/P2")),ptp(getApplicationData().getFrame("/P4"))).setBlendingRel(0.1).setJointVelocityRel(0.5);
+		MotionBatch wave = new MotionBatch(ptp(getApplicationData().getFrame("/P1")),ptp(getApplicationData().getFrame("/P2")),ptp(getApplicationData().getFrame("/P1")),ptp(getApplicationData().getFrame("/P2")),ptp(getApplicationData().getFrame("/P1")),ptp(getApplicationData().getFrame("/P4"))).setBlendingRel(0.1).setJointVelocityRel(0.5);
 		for (int i=0;i<2;i++){
-		int answer=getApplicationUI().displayModalDialog(ApplicationDialogType.QUESTION,"What would you like me to do?", "Wave","no");
+		int answer=getApplicationUI().displayModalDialog(ApplicationDialogType.QUESTION,"What would you like me to do?", "Wave","High Five");
 		if (answer==0){
 			logger.info("Waving!");
 			robot.move(ptp(getApplicationData().getFrame("/P4")).setJointVelocityRel(0.4));
@@ -52,8 +54,12 @@ public class RobotApplication extends RoboticsAPIApplication {
 			robot.move(wave);
 			robot.move(ptp(getApplicationData().getFrame("/P4")).setJointVelocityRel(0.75));
 		
-		}else{
-			
+		}else if (answer==1){
+			logger.info("High Five!");
+			robot.move(ptp(getApplicationData().getFrame("/P5")).setJointVelocityRel(0.5));
+			ThreadUtil.milliSleep(1000);
+			robot.move(ptp(getApplicationData().getFrame("/P6")).setJointVelocityRel(0.65));
+			robot.move(ptp(getApplicationData().getFrame("/P4")).setJointVelocityRel(0.5));
 		}
 		}
 	}
