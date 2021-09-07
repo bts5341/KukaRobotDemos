@@ -38,7 +38,7 @@ public class RobotApplication extends RoboticsAPIApplication {
 	@Override
 	public void run() {
 		// your application execution starts here
-		MotionBatch test = new MotionBatch(ptp(getApplicationData().getFrame("/P4")),ptp(getApplicationData().getFrame("/P1")),ptp(getApplicationData().getFrame("/P2")),ptp(getApplicationData().getFrame("/P3")));
+		MotionBatch test = new MotionBatch(ptp(getApplicationData().getFrame("/P4")),ptp(getApplicationData().getFrame("/P1")),ptp(getApplicationData().getFrame("/P2")),ptp(getApplicationData().getFrame("/P3"))).setBlendingRel(0.5);
 		lBR_iiwa_14_R820_1.move(test);
 		
 		}
