@@ -44,9 +44,11 @@ public class RobotApplication extends RoboticsAPIApplication {
 	@Override
 	public void run() {
 		// your application execution starts here
+		boolean END=false;
 		MotionBatch wave = new MotionBatch(ptp(getApplicationData().getFrame("/P1")),ptp(getApplicationData().getFrame("/P2")),ptp(getApplicationData().getFrame("/P1")),ptp(getApplicationData().getFrame("/P2")),ptp(getApplicationData().getFrame("/P1")),ptp(getApplicationData().getFrame("/P4"))).setBlendingRel(0.1).setJointVelocityRel(0.5);
-		for (int i=0;i<2;i++){
-		int answer=getApplicationUI().displayModalDialog(ApplicationDialogType.QUESTION,"What would you like me to do?", "Wave","High Five");
+		MotionBatch dance = new MotionBatch(ptp(Math.PI/2,Math.PI/4,0,-Math.PI/4,Math.PI,0,Math.PI),ptp(-Math.PI/2,-Math.PI/4,0,Math.PI/4,2*Math.PI,0,2*Math.PI).setBlendingRel(0.5).setJointVelocityRel(0.4));
+		while(!END){
+		int answer=getApplicationUI().displayModalDialog(ApplicationDialogType.QUESTION,"What would you like me to do?", "Wave","High Five","Dance","End");
 		if (answer==0){
 			logger.info("Waving!");
 			robot.move(ptp(getApplicationData().getFrame("/P4")).setJointVelocityRel(0.4));
@@ -56,11 +58,23 @@ public class RobotApplication extends RoboticsAPIApplication {
 		
 		}else if (answer==1){
 			logger.info("High Five!");
+			robot.move(ptp(getApplicationData().getFrame("/P4")).setJointVelocityRel(0.5));
 			robot.move(ptp(getApplicationData().getFrame("/P5")).setJointVelocityRel(0.5));
 			ThreadUtil.milliSleep(1000);
 			robot.move(ptp(getApplicationData().getFrame("/P6")).setJointVelocityRel(0.65));
 			robot.move(ptp(getApplicationData().getFrame("/P5")).setJointVelocityRel(0.5));
 			robot.move(ptp(getApplicationData().getFrame("/P4")).setJointVelocityRel(0.5));
+		}else if (answer==2){
+			logger.info("Dance!");
+			robot.move(ptp(getApplicationData().getFrame("/P4")).setJointVelocityRel(0.5));
+			robot.move(dance);
+			robot.move(ptp(getApplicationData().getFrame("/P4")).setJointVelocityRel(0.5));
+			
+			
+			
+		}else if(answer==3){
+			logger.info("Sayonara!");
+			END=true;
 		}
 		}
 	}
