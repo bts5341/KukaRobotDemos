@@ -38,7 +38,10 @@ public class RobotApplication extends RoboticsAPIApplication {
 	public void run() {
 		// your application execution starts here
 		lBR_iiwa_14_R820_1.move(ptpHome());
-		lBR_iiwa_14_R820_1.move(ptp(1.57,0,0,0,0,0,0));
-		lBR_iiwa_14_R820_1.move(ptpHome());
-	}
+		lBR_iiwa_14_R820_1.move(ptp(getApplicationData().getFrame("/P1")));
+		for(int i =0;i<4;i++){
+		lBR_iiwa_14_R820_1.move(ptp(getApplicationData().getFrame("/P2")));
+		lBR_iiwa_14_R820_1.move(ptp(getApplicationData().getFrame("/P3")));
+		}
+		}
 }
