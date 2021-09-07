@@ -7,6 +7,7 @@ import static com.kuka.roboticsAPI.motionModel.BasicMotions.*;
 
 import com.kuka.roboticsAPI.deviceModel.LBR;
 import com.kuka.roboticsAPI.motionModel.MotionBatch;
+import com.kuka.task.ITaskLogger;
 
 /**
  * Implementation of a robot application.
@@ -28,6 +29,8 @@ import com.kuka.roboticsAPI.motionModel.MotionBatch;
  */
 public class RobotApplication extends RoboticsAPIApplication {
 	@Inject
+	private ITaskLogger logger;
+
 	private LBR lBR_iiwa_14_R820_1;
 
 	@Override
@@ -39,7 +42,9 @@ public class RobotApplication extends RoboticsAPIApplication {
 	public void run() {
 		// your application execution starts here
 		MotionBatch test = new MotionBatch(ptp(getApplicationData().getFrame("/P4")),ptp(getApplicationData().getFrame("/P1")),ptp(getApplicationData().getFrame("/P2")),ptp(getApplicationData().getFrame("/P3"))).setBlendingRel(0.5);
+		
 		lBR_iiwa_14_R820_1.move(test);
+		logger.info("Hello there!");
 		
 		}
 }
