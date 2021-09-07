@@ -46,7 +46,7 @@ public class RobotApplication extends RoboticsAPIApplication {
 		// your application execution starts here
 		boolean END=false;
 		MotionBatch wave = new MotionBatch(ptp(getApplicationData().getFrame("/P1")),ptp(getApplicationData().getFrame("/P2")),ptp(getApplicationData().getFrame("/P1")),ptp(getApplicationData().getFrame("/P2")),ptp(getApplicationData().getFrame("/P1")),ptp(getApplicationData().getFrame("/P4"))).setBlendingRel(0.1).setJointVelocityRel(0.5);
-		MotionBatch dance = new MotionBatch(ptp(Math.PI/2,0,0,0,0,0,0),ptp(-Math.PI/2,0,0,0,0,0,0).setJointVelocityRel(0.4));
+		MotionBatch dance = new MotionBatch(ptp(Math.PI/2,0,0,0,0,0,0).setJointVelocityRel(0.4).setBlendingRel(0.25),ptp(-Math.PI/2,0,0,0,0,0,0).setJointVelocityRel(0.4).setBlendingRel(0.25));
 		while(!END){
 		int answer=getApplicationUI().displayModalDialog(ApplicationDialogType.QUESTION,"What would you like me to do?", "Wave","High Five","Dance","End");
 		if (answer==0){
