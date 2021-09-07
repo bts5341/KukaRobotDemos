@@ -7,6 +7,7 @@ import static com.kuka.roboticsAPI.motionModel.BasicMotions.*;
 
 import com.kuka.roboticsAPI.deviceModel.LBR;
 import com.kuka.roboticsAPI.motionModel.MotionBatch;
+import com.kuka.roboticsAPI.uiModel.ApplicationDialogType;
 import com.kuka.task.ITaskLogger;
 
 /**
@@ -42,9 +43,12 @@ public class RobotApplication extends RoboticsAPIApplication {
 	public void run() {
 		// your application execution starts here
 		MotionBatch test = new MotionBatch(ptp(getApplicationData().getFrame("/P4")),ptp(getApplicationData().getFrame("/P1")),ptp(getApplicationData().getFrame("/P2")),ptp(getApplicationData().getFrame("/P3"))).setBlendingRel(0.5);
-		
+		int answer=getApplicationUI().displayModalDialog(ApplicationDialogType.QUESTION,"yes or no?", "yes","no");
+		if (answer==0){
 		lBR_iiwa_14_R820_1.move(test);
 		logger.info("Hello there!");
-		
+		}else{
+			logger.info("bye!");
+		}
 		}
 }
