@@ -6,6 +6,7 @@ import com.kuka.roboticsAPI.applicationModel.RoboticsAPIApplication;
 import static com.kuka.roboticsAPI.motionModel.BasicMotions.*;
 
 import com.kuka.roboticsAPI.deviceModel.LBR;
+import com.kuka.roboticsAPI.motionModel.MotionBatch;
 
 /**
  * Implementation of a robot application.
@@ -37,10 +38,8 @@ public class RobotApplication extends RoboticsAPIApplication {
 	@Override
 	public void run() {
 		// your application execution starts here
-		lBR_iiwa_14_R820_1.move(ptpHome());
-		lBR_iiwa_14_R820_1.moveAsync(ptp(getApplicationData().getFrame("/P1")));
-		lBR_iiwa_14_R820_1.move(ptp(getApplicationData().getFrame("/P2")));
-		lBR_iiwa_14_R820_1.move(ptp(getApplicationData().getFrame("/P3")));
+		MotionBatch test = new MotionBatch(ptp(getApplicationData().getFrame("/P4")),ptp(getApplicationData().getFrame("/P1")),ptp(getApplicationData().getFrame("/P2")),ptp(getApplicationData().getFrame("/P3")));
+		lBR_iiwa_14_R820_1.move(test);
 		
 		}
 }
